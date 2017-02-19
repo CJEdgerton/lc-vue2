@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.is-loading {
+			color: red;	
+		}
+	</style>
+</head>
+<body>
+
+	<div id="root">
+		<ul>
+			<li v-for="name in names">{{ name }}</li>
+		</ul>		
+
+		<input type="text" id="input" v-model="newName">
+		<button 
+			@click="addName"
+			v-bind:title="buttonTitle"
+		>Add Name</button>
+
+		<hr>
+
+		<button @click="toggleClass" :class="{ 'is-loading' : isLoading }">Add Me 2</button>
+	</div>
+
+	<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+
+	<script type="text/javascript">
+
+		var app = new Vue ({
+			el: '#root',
+			data: {
+				newName: '',
+				names: ['Joe', 'Mary', 'Jane', 'Jack'],
+				buttonTitle: 'Add a name.',
+				isLoading: false
+			},
+			methods: {
+				addName() {
+					this.names.push(this.newName);
+					this.newName = '';
+				},
+
+				toggleClass() {
+					this.isLoading == false ? this.isLoading = true : this.isLoading = false;
+				}
+			}	
+		});
+
+	document.querySelector('#input').value = data.message;
+	</script>
+
+
+</body>
+</html>
