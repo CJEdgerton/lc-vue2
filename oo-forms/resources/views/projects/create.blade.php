@@ -28,35 +28,35 @@
 			method="POST" 
 			action="/projects" 
 			style="margin-top:20px;"
-			@keydown="errors.clear($event.target.name)"
+			@keydown="form.errors.clear($event.target.name)"
 			@submit.prevent="onSubmit">
 
 			{{ csrf_field() }}		
 
 			<div class="control">
 				<label for="name" class="label">Project Name:</label>
-				<input type="text" name="name" id="name" class="input" v-model="name">
+				<input type="text" name="name" id="name" class="input" v-model="form.name">
 				<span 
 					class="help is-danger" 
-					v-text="errors.get('name')"
-					v-if="errors.has('name')"
+					v-text="form.errors.get('name')"
+					v-if="form.errors.has('name')"
 					></span>
 			</div>
 
 			<div class="control">
 				<label for="description" class="label">Project Description:</label>
-				<input type="text" name="description" id="description" class="input" v-model="description" >
+				<input type="text" name="description" id="description" class="input" v-model="form.description" >
 				<span 
 					class="help is-danger" 
-					v-text="errors.get('description')"
-					v-if="errors.has('description')"
+					v-text="form.errors.get('description')"
+					v-if="form.errors.has('description')"
 					></span>
 			</div>
 
 			<div class="control">
 				<button 
 					class="button is-primary"
-					:disabled="errors.any()">
+					:disabled="form.errors.any()">
 					Create
 				</button>
 			</div>
